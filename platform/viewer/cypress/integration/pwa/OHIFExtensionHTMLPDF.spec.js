@@ -1,3 +1,6 @@
+/*
+Temporarily disabling as we transition to containerized PACS for E2E tests
+
 describe('OHIF HTML Extension', () => {
   before(() => {
     cy.openStudyInViewer(
@@ -79,3 +82,4 @@ describe('OHIF HTML Extension', () => {
 //     cy.screenshot('PDF Extension - Should load PDF file');
 //   });
 // });
+ */

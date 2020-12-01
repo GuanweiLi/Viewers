@@ -31,6 +31,6 @@ describe('Visual Regression - OHIF Study Viewer Page', function() {
 
     //close modal
     cy.get('[data-cy="close-button"]').click();
-    cy.get('@aboutOverlay').should('not.be.enabled');
+    cy.get('@aboutOverlay').should('not.exist');
   });
 });
