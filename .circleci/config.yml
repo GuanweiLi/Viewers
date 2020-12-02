@@ -372,7 +372,7 @@ workflows:
           record: false
           store_artifacts: false
           working_directory: platform/viewer
-          build: npx cross-env QUICK_BUILD=true yarn run build:package
+          build: npx cross-env QUICK_BUILD=true APP_CONFIG=config/dicomweb-server.js yarn run build:package
           start: yarn run test:e2e:serve
           spec: 'cypress/integration/common/**/*,cypress/integration/script-tag/**/*'
           wait-on: 'http://localhost:3000'
@@ -401,7 +401,7 @@ workflows:
           yarn: true
           store_artifacts: false
           working_directory: platform/viewer
-          build: npx cross-env QUICK_BUILD=true yarn run build
+          build: npx cross-env QUICK_BUILD=true APP_CONFIG=config/dicomweb-server.js yarn run build
           # start server --> verify running --> percy + chrome + cypress
           command: yarn run test:e2e:dist
           cache-key: 'yarn-packages-{{ checksum "yarn.lock" }}'
@@ -478,7 +478,7 @@ workflows:
           yarn: true
           store_artifacts: false
           working_directory: platform/viewer
-          build: npx cross-env QUICK_BUILD=true yarn run build
+          build: npx cross-env QUICK_BUILD=true APP_CONFIG=config/dicomweb-server.js yarn run build
           # start server --> verify running --> percy + chrome + cypress
           command: yarn run test:e2e:dist
           cache-key: 'yarn-packages-{{ checksum "yarn.lock" }}'
