@@ -25,9 +25,7 @@ executors:
     docker:
       # Primary container image where all steps run.
       - image: 'cypress/browsers:node10.16.0-chrome76'
-      # http://couchdb:5984
-      - image: 'couchdb:2.3.1'
-      - image: 'ohif/dicomweb-server:latest'
+      - image: 'ohif/viewer-testdata:latest'
 
 defaults: &defaults
   docker:
@@ -341,10 +339,6 @@ workflows:
                 yarn -v
                 # Add `wait-on` library for Cypress orb? (global)
                 yarn global add wait-on
-            - run: |
-                curl --retry 10 --retry-delay 5 -v -X PUT http://localhost:5984/_users
-                curl --retry 10 --retry-delay 5 -X PUT http://localhost:5984/_replicator
-                curl --retry 10 --retry-delay 5 -X PUT http://localhost:5984/_global_changes
           yarn: true
           record: false
           store_artifacts: false
