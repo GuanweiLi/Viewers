@@ -363,15 +363,14 @@ workflows:
       # E2E: script-tag
       - cypress/run:
           name: 'E2E: Script Tag'
-          executor: cypress/browsers-chrome76
+          executor: with-chrome
           browser: chrome
           pre-steps:
             - run: 'rm -rf ~/.yarn && npm i -g yarn && yarn -v && yarn global
                 add wait-on' # Use yarn latest
           yarn: true
-          debug: 'cypress'
           record: true
-          store_artifacts: false
+          store_artifacts: true
           working_directory: platform/viewer
           build: npx cross-env QUICK_BUILD=true APP_CONFIG=config/dicomweb-server.js yarn run build:package
           start: yarn run test:e2e:serve
@@ -384,6 +383,8 @@ workflows:
                 path: platform/viewer/cypress/screenshots
             - store_artifacts:
                 path: platform/viewer/cypress/videos
+            - store_test_results:
+                path: platform/viewer/cypress/results
           requires:
             - UNIT_TESTS
 
