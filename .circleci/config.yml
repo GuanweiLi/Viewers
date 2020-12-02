@@ -25,7 +25,7 @@ executors:
     docker:
       # Primary container image where all steps run.
       - image: 'cypress/browsers:node10.16.0-chrome76'
-      - image: 'ohif/viewer-testdata:latest'
+      - image: 'ohif/viewer-testdata:0.1-test'
 
 defaults: &defaults
   docker:
@@ -340,8 +340,8 @@ workflows:
                 # Add `wait-on` library for Cypress orb? (global)
                 yarn global add wait-on
           yarn: true
-          record: false
-          store_artifacts: false
+          record: true
+          store_artifacts: true
           working_directory: platform/viewer
           build: |
             # Build our client
@@ -357,7 +357,7 @@ workflows:
             - store_artifacts:
                 path: platform/viewer/cypress/videos
             - store_test_results:
-                path: ~/project/platform/viewer/cypress/results
+                path: platform/viewer/cypress/results
           requires:
             - UNIT_TESTS
       # E2E: script-tag
