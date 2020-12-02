@@ -369,6 +369,7 @@ workflows:
             - run: 'rm -rf ~/.yarn && npm i -g yarn && yarn -v && yarn global
                 add wait-on' # Use yarn latest
           yarn: true
+          debug: 'cypress'
           record: true
           store_artifacts: false
           working_directory: platform/viewer
