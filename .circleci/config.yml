@@ -21,7 +21,7 @@ executors:
       - image: 'cypress/browsers:node14.15.0-chrome86-ff82'
         environment:
           CYPRESS_BASE_URL: https://ohif-staging.netlify.com/
-  with-chrome:
+  chrome-and-pacs:
     docker:
       # Primary container image where all steps run.
       - image: 'cypress/browsers:node14.15.0-chrome86-ff82'
@@ -329,7 +329,7 @@ workflows:
       # E2E: PWA
       - cypress/run:
           name: 'E2E: PWA'
-          executor: with-chrome
+          executor: chrome-and-pacs
           browser: chrome
           pre-steps:
             - run: |
@@ -345,8 +345,8 @@ workflows:
           working_directory: platform/viewer
           build: |
             # Build our client
-            npx cross-env QUICK_BUILD=true yarn run build
-          start: APP_CONFIG=config/dicomweb-server.js yarn run dev
+            npx cross-env QUICK_BUILD=true APP_CONFIG=config/dicomweb-server.js yarn run build
+          start: yarn run test:e2e:serve
           spec: 'cypress/integration/common/**/*,cypress/integration/pwa/**/*'
           wait-on: 'http://localhost:3000'
           cache-key: 'yarn-packages-{{ checksum "yarn.lock" }}'
@@ -363,7 +363,7 @@ workflows:
       # E2E: script-tag
       - cypress/run:
           name: 'E2E: Script Tag'
-          executor: with-chrome
+          executor: chrome-and-pacs
           browser: chrome
           pre-steps:
             - run: 'rm -rf ~/.yarn && npm i -g yarn && yarn -v && yarn global
