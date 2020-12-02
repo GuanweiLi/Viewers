@@ -3,7 +3,7 @@ describe('OHIF VTK Extension', () => {
     cy.checkStudyRouteInViewer(
       '1.3.6.1.4.1.25403.345050719074.3824.20170125113417.1'
     );
-    cy.expectMinimumThumbnails(6);
+    cy.expectMinimumThumbnails(3);
 
     // TODO: Added 1s wait because we are loading initial series list
     // from QIDO-RS, which is breaking some cypress checks
@@ -19,7 +19,7 @@ describe('OHIF VTK Extension', () => {
     // has data from a drag-n-drop
     // Drag and drop third thumbnail into first viewport
     cy.get('[data-cy="thumbnail-list"]')
-      .eq(3)
+      .eq(2)
       .drag('.viewport-drop-target');
 
     //Select 2D MPR button

@@ -3,7 +3,7 @@ describe('OHIF Cornerstone Toolbar', () => {
     cy.checkStudyRouteInViewer(
       '1.2.840.113619.2.5.1762583153.215519.978957063.78'
     );
-    cy.expectMinimumThumbnails(5);
+    cy.expectMinimumThumbnails(3);
   });
 
   beforeEach(() => {
@@ -55,7 +55,7 @@ describe('OHIF Cornerstone Toolbar', () => {
   });
 
   it('checks if Stack Scroll tool will navigate across all series in the viewport', () => {
-    //Click on button and vefiry if icon is active on toolbar
+    //Click on button and verify if icon is active on toolbar
     cy.get('@stackScrollBtn')
       .click()
       .then($stackScrollBtn => {
@@ -91,7 +91,7 @@ describe('OHIF Cornerstone Toolbar', () => {
   });
 
   it('checks if Levels tool will change the contrast and brightness of an image in the viewport', () => {
-    //Click on button and vefiry if icon is active on toolbar
+    //Click on button and verify if icon is active on toolbar
     cy.get('@levelsBtn')
       .click()
       .then($levelsBtn => {
@@ -112,7 +112,7 @@ describe('OHIF Cornerstone Toolbar', () => {
   });
 
   it('checks if Pan tool will move the image inside the viewport', () => {
-    //Click on button and vefiry if icon is active on toolbar
+    //Click on button and verify if icon is active on toolbar
     cy.get('@panBtn')
       .click()
       .then($panBtn => {
@@ -126,7 +126,7 @@ describe('OHIF Cornerstone Toolbar', () => {
   });
 
   it('checks if Length annotation can be added on viewport and on measurements panel', () => {
-    //Click on button and vefiry if icon is active on toolbar
+    //Click on button and verify if icon is active on toolbar
     cy.get('@lengthBtn')
       .click()
       .then($lengthbtn => {
@@ -153,7 +153,7 @@ describe('OHIF Cornerstone Toolbar', () => {
   });
 
   it('checks if Angle annotation can be added on viewport and on measurements panel', () => {
-    //Click on button and vefiry if icon is active on toolbar
+    //Click on button and verify if icon is active on toolbar
     cy.get('@angleBtn')
       .click()
       .then($angleBtn => {
